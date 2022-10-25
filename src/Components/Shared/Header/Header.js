@@ -1,11 +1,16 @@
 import React from "react";
+import { useContext } from "react";
+import { Image } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 
 const Header = () => {
+  const {user} = useContext(AuthContext);
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -49,7 +54,12 @@ const Header = () => {
                 to="/login"
                 className="mt-2 text-white me-3 text-decoration-none"
               >
-                Login
+                {user?.photoURL ? (
+                  <Image style={{height:'30px'}} roundedCircle src={user?.photoURL }></Image>
+                ) : (
+                  <FaUser></FaUser>
+                )}
+    
               </Link>
             </Nav>
           </Navbar.Collapse>

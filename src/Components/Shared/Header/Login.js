@@ -4,9 +4,26 @@ import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
 import ListGroup from "react-bootstrap/ListGroup";
 import { FcGoogle } from "react-icons/fc";
-import { FaGithub} from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
+import { useContext } from "react";
+import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
+  const { googleSignIn } = useContext(AuthContext);
+    const provier = new GoogleAuthProvider();
+
+    const handleGoogleSignIn=()=>{
+        googleSignIn(provier)
+        .then((result)=>{
+            const user = result.user;
+            console.log(user);
+        })
+        .catch((error)=>{
+            console.error(error)
+        })
+    }
+
   return (
     <div
       style={{
@@ -16,18 +33,18 @@ const Login = () => {
     >
       <Form>
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
+          {/* <Form.Label>Email address</Form.Label> */}
           <Form.Control type="email" placeholder="Enter email" />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
+          {/* <Form.Label>Password</Form.Label> */}
           <Form.Control type="password" placeholder="Password" />
         </Form.Group>
         <Form.Group>
           <Form.Text className="text-muted  mb-3">
             <p>
-              Not an user yet? <Link>Register</Link>
+              Not an user yet? <Link to="/registration">Register</Link>
             </p>
           </Form.Text>
         </Form.Group>
@@ -37,8 +54,9 @@ const Login = () => {
       </Form>
       <div className="mt-5">
         <ListGroup as="ul">
-          <Button variant="light" className="mb-2">
+          <Button onClick={handleGoogleSignIn} variant="light" className="mb-2">
             <FcGoogle className="me-3"></FcGoogle>
+            
             Continue with Google
           </Button>
           <Button variant="light">
