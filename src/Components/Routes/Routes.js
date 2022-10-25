@@ -1,6 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
+
 import Courses from "../Courses/Courses";
 import Main from "../Layout/Main";
+
 import Blog from "../Shared/Header/Blog";
 import FAQ from "../Shared/Header/FAQ";
 import Login from "../Shared/Header/Login";
@@ -13,6 +15,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/courses",
+        loader: () => fetch(`http://localhost:5000/catagory/07`),
         element: <Courses></Courses>,
       },
       {
@@ -30,6 +33,12 @@ export const router = createBrowserRouter([
       {
         path: "/registration",
         element: <Registratioin></Registratioin>,
+      },
+      {
+        path: "/catagory/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/catagory/${params.id}`),
+        element: <Courses></Courses>,
       },
     ],
   },
