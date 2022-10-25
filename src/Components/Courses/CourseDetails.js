@@ -2,8 +2,9 @@ import React from "react";
 import { useLoaderData } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import {} from "react-icons/fc";
-import { FaEye } from "react-icons/fa";
+import { FaRadiation, FaRating } from "react-icons/fa";
+import {} from "react-icons/fa"
+import { FaEye, FaReact } from "react-icons/fa";
 import { Image } from "react-bootstrap";
 
 const CourseDetails = () => {
@@ -12,13 +13,21 @@ const CourseDetails = () => {
     courseDetails;
   console.log(courseDetails);
   return (
-    <div>
-      <h1>Heloo</h1>
+    <div className="mt-5">
       <h3>{courseDetails?.title}</h3>
       <Card className="t">
         <Card.Header>
-          <div className="d-flex justify-content-between">
-            <div><Image style={{width:"40px"}} roundedCircle src={author?.img}></Image>{author?.name}</div>
+          <div className="d-flex justify-content-between align-items-center">
+            <div>
+              <Image
+                className="me-2"
+                style={{ width: "40px", height: "40px" }}
+                roundedCircle
+                src={author?.img}
+              ></Image>
+              {author?.name}
+            </div>
+            <Button variant="light">Download PDF</Button>
 
             <div>
               <FaEye className="me-2"></FaEye>
@@ -30,10 +39,13 @@ const CourseDetails = () => {
         <Card.Body>
           <Card.Title>{title}</Card.Title>
           <Card.Text>{details}</Card.Text>
-          <Button variant="primary">Go somewhere</Button>
+          <Button variant="primary">Get Premium Access</Button>
         </Card.Body>
         <Card.Footer className="text-muted">
-          <div>{rating?.number}</div>
+          <div className="d-flex align-items-center">
+            <FaRadiation className="me-2"></FaRadiation>
+            {rating?.number}
+          </div>
         </Card.Footer>
       </Card>
     </div>
