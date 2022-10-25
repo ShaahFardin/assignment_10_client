@@ -10,7 +10,7 @@ import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import { GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
-  const { googleSignIn } = useContext(AuthContext);
+  const { googleSignIn, userLogin } = useContext(AuthContext);
     const provier = new GoogleAuthProvider();
 
     const handleGoogleSignIn=()=>{
@@ -23,7 +23,23 @@ const Login = () => {
             console.error(error)
         })
     }
+    const handleManualSignIn = (event) =>{
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password) ;
 
+        userLogin(email, password)
+        .then((result)=>{
+            const user = result.user;
+            console.log(user);
+        })
+        .catch((error)=>{
+            console.error(error)
+        });
+    }
+    
   return (
     <div
       style={{
@@ -31,13 +47,17 @@ const Login = () => {
         marginTop: "100px",
       }}
     >
-      <Form className="align-items-center">
+      <Form className="align-items-center" onSubmit={handleManualSignIn}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Control type="email" name="email" placeholder="Enter email" />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Control type="password" name="password" placeholder="Password" />
+          <Form.Control
+            type="password"
+            name="password"
+            placeholder="Password"
+          />
         </Form.Group>
         <Form.Group>
           <Form.Text className="text-muted  mb-3">
@@ -54,7 +74,6 @@ const Login = () => {
         <ListGroup as="ul">
           <Button onClick={handleGoogleSignIn} variant="light" className="mb-2">
             <FcGoogle className="me-3"></FcGoogle>
-            
             Continue with Google
           </Button>
           <Button variant="light">
