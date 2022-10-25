@@ -36,7 +36,7 @@ const Header = () => {
               <NavDropdown
                 title="Theme"
                 id="collasible-nav-dropdown"
-                className=" text-white me-3 text-decoration-none"
+                className=" text-white me-3 "
               >
                 <NavDropdown.Item href="#action/3.1">
                   Device theme
