@@ -20,7 +20,7 @@ const Header = () => {
   };
   return (
     <div>
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Navbar fixed="top" collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
           <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -34,13 +34,13 @@ const Header = () => {
                 Courses
               </Link>
               <Link
-                to="/blog"
+                to="/faq"
                 className="mt-2 text-white me-3 text-decoration-none"
               >
                 FAQ
               </Link>
               <Link
-                to="/faq"
+                to="/blog"
                 className="mt-2 text-white me-3 text-decoration-none"
               >
                 Blog

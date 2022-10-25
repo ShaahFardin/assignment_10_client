@@ -2,9 +2,9 @@ import React from "react";
 import { useLoaderData } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import { FaRadiation, FaRating } from "react-icons/fa";
+import { FaRadiation } from "react-icons/fa";
 import {} from "react-icons/fa"
-import { FaEye, FaReact } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
 import { Image } from "react-bootstrap";
 
 const CourseDetails = () => {
@@ -13,7 +13,7 @@ const CourseDetails = () => {
     courseDetails;
   console.log(courseDetails);
   return (
-    <div className="mt-5">
+    <div style={{marginTop:"100px"}}>
       <h3>{courseDetails?.title}</h3>
       <Card className="t">
         <Card.Header>

@@ -44,7 +44,8 @@ const Login = () => {
     <div
       style={{
         width: "400px",
-        marginTop: "100px",
+        marginTop: "150px",
+        marginLeft:"100px"
       }}
     >
       <Form className="align-items-center" onSubmit={handleManualSignIn}>
