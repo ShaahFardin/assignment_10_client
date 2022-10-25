@@ -31,7 +31,7 @@ const Login = () => {
         marginTop: "100px",
       }}
     >
-      <Form>
+      <Form className="align-items-center">
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Control type="email" name="email" placeholder="Enter email" />
         </Form.Group>
