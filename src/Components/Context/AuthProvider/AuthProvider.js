@@ -1,6 +1,6 @@
 import React from 'react';
 import { createContext } from 'react';
-import {getAuth, onAuthStateChanged, signInWithPopup} from 'firebase/auth'
+import {getAuth, onAuthStateChanged, signInWithPopup, signOut} from 'firebase/auth'
 import app from '../../Firebase/Firebase.config';
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -14,6 +14,9 @@ const AuthProvider = ({children}) => {
     // SignIn with google
     const googleSignIn = (provider) =>{
         return signInWithPopup(auth, provider);
+    }
+    const logout = () =>{
+        return signOut(auth);
     } 
     useEffect(()=>{
        const unsubscribe = onAuthStateChanged(auth, currentUser=>{
@@ -22,7 +25,7 @@ const AuthProvider = ({children}) => {
         });
         return unsubscribe;
     },[]);
-    const authInfo = { user, googleSignIn };
+    const authInfo = { user, googleSignIn, logout };
     return (
         <AuthContext.Provider value={authInfo}>
             {children}
