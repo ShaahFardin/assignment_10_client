@@ -10,6 +10,7 @@ import Blog from "../Shared/Header/Blog";
 import FAQ from "../Shared/Header/FAQ";
 import Login from "../Shared/Header/Login";
 import Registratioin from "../Shared/Header/Registratioin";
+import UserDetails from "../UserDetails/UserDetails";
 import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
@@ -63,6 +64,10 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path: "/userDetails",
+        element: <UserDetails></UserDetails>
+      }
     ],
   },
   {

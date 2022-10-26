@@ -82,7 +82,7 @@ const Header = () => {
                   </>
                 )}
               </Link>
-              <Link className="mt-2 text-white me-3 text-decoration-none">
+              <Link to='/userDetails' className="mt-2 text-white me-3 text-decoration-none">
                 {user?.photoURL ? (
                   <Image
                     style={{ height: "30px" }}
