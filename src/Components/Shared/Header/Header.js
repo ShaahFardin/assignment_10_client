@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import { useContext } from "react";
 import { Image } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
@@ -9,12 +8,10 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { FaMedapps, FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
-import "./Header.css"
+import "./Header.css";
 
 const Header = () => {
-  
-  const { user, logout, handleTheme, blackTheme, lightTheme } =
-    useContext(AuthContext);
+  const { user, logout, blackTheme, lightTheme } = useContext(AuthContext);
   const handleLogOut = () => {
     logout()
       .then(() => {})
@@ -22,7 +19,7 @@ const Header = () => {
         console.error(error);
       });
   };
- 
+
   return (
     <div>
       <Navbar fixed="top" collapseOnSelect expand="lg" bg="dark" variant="dark">
