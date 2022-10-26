@@ -3,7 +3,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { FaRadiation } from "react-icons/fa";
-import {} from "react-icons/fa"
+import {} from "react-icons/fa";
 import { FaEye } from "react-icons/fa";
 import { Image } from "react-bootstrap";
 
@@ -35,7 +35,7 @@ const CourseDetails = () => {
             </div>
           </div>
         </Card.Header>
-        
+
         <Card.Img
           style={{ height: "500px" }}
           className="card-img-top"
