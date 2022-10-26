@@ -9,6 +9,7 @@ import Blog from "../Shared/Header/Blog";
 import FAQ from "../Shared/Header/FAQ";
 import Login from "../Shared/Header/Login";
 import Registratioin from "../Shared/Header/Registratioin";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -54,9 +55,13 @@ export const router = createBrowserRouter([
         element: <CourseDetails></CourseDetails>,
       },
       {
-        path: '/checkout',
-        element: <Checkout></Checkout>
-      }
+        path: "/checkout",
+        element: (
+          <PrivateRoute>
+            <Checkout></Checkout>
+          </PrivateRoute>
+        ),
+      },
     ],
   },
 ]);

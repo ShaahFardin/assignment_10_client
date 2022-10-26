@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import { useContext } from 'react';
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -6,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const Registratioin = () => {
+  const [error, setError] = useState('');
     const {createNewUser} = useContext(AuthContext);
     const handleRegister = (event) =>{
         event.preventDefault();
@@ -19,11 +21,13 @@ const Registratioin = () => {
         createNewUser(email, password)
         .then((result)=>{
             const user = result.user;
-            console.log(user);
+            console.log("new user:",user);
             form.reset();
+            setError('');
         })
         .catch((error)=>{
             console.error(error);
+            setError(error.message);
         })
     }
     return (
@@ -69,6 +73,11 @@ const Registratioin = () => {
           <Form.Text className="text-muted  mb-3">
             <p>
               Not an user yet? <Link to="/login">Login</Link>
+            </p>
+          </Form.Text>
+          <Form.Text className="text-danger  mb-3">
+            <p>
+             {error}
             </p>
           </Form.Text>
           <Button variant="primary" type="submit" style={{ width: "400px" }}>

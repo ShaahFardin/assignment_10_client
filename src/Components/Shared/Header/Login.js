@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import ListGroup from "react-bootstrap/ListGroup";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
@@ -11,48 +11,51 @@ import { GoogleAuthProvider } from "firebase/auth";
 import { useState } from "react";
 
 const Login = () => {
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const { googleSignIn, userLogin } = useContext(AuthContext);
-    const provier = new GoogleAuthProvider();
+  const provier = new GoogleAuthProvider();
 
-    const handleGoogleSignIn=()=>{
-        googleSignIn(provier)
-        .then((result)=>{
-            const user = result.user;
-            console.log(user);
-        })
-        .catch((error)=>{
-            console.error(error);
-            
-        })
-    }
-    const handleManualSignIn = (event) =>{
-        event.preventDefault();
-        const form = event.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        console.log(email, password) ;
+  let location = useLocation();
+  let navigate = useNavigate();
+    const from = location.state?.from?.pathname || "/";
 
-        userLogin(email, password)
-        .then((result)=>{
-            const user = result.user;
-            console.log(user);
-            setError('');
-            form.reset();
-            
-        })
-        .catch((error)=>{
-            console.error(error);
-            setError(error.message);
-        });
-    }
-    
+  const handleGoogleSignIn = () => {
+    googleSignIn(provier)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+  const handleManualSignIn = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+
+    userLogin(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        setError("");
+        form.reset();
+        navigate(from, {replace: true});
+      })
+      .catch((error) => {
+        console.error(error);
+        setError(error.message);
+      });
+  };
+
   return (
     <div
       style={{
         width: "400px",
         marginTop: "150px",
-        marginLeft:"100px"
+        marginLeft: "100px",
       }}
     >
       <Form className="align-items-center" onSubmit={handleManualSignIn}>
@@ -74,12 +77,15 @@ const Login = () => {
             </p>
           </Form.Text>
         </Form.Group>
-        
-          <Form.Text className="text-danger mb-5">
-          {error}
-          </Form.Text>
-       
-        <Button className="mt-3" style={{ width: "400px" }} variant="primary" type="submit">
+
+        <Form.Text className="text-danger mb-5">{error}</Form.Text>
+
+        <Button
+          className="mt-3"
+          style={{ width: "400px" }}
+          variant="primary"
+          type="submit"
+        >
           Login
         </Button>
       </Form>
