@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { FaRadiation } from "react-icons/fa";
@@ -13,7 +13,7 @@ const CourseDetails = () => {
     courseDetails;
   console.log(courseDetails);
   return (
-    <div style={{marginTop:"100px"}}>
+    <div style={{ marginTop: "100px" }}>
       <h3>{courseDetails?.title}</h3>
       <Card className="t">
         <Card.Header>
@@ -39,7 +39,9 @@ const CourseDetails = () => {
         <Card.Body>
           <Card.Title>{title}</Card.Title>
           <Card.Text>{details}</Card.Text>
-          <Button variant="primary">Get Premium Access</Button>
+          <Link to='/checkout'>
+            <Button variant="primary">Get Premium Access</Button>
+          </Link>
         </Card.Body>
         <Card.Footer className="text-muted">
           <div className="d-flex align-items-center">

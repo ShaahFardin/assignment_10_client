@@ -3,6 +3,7 @@ import CourseDetails from "../Courses/CourseDetails";
 
 import Courses from "../Courses/Courses";
 import Main from "../Layout/Main";
+import Checkout from "../Shared/Checkout";
 
 import Blog from "../Shared/Header/Blog";
 import FAQ from "../Shared/Header/FAQ";
@@ -52,6 +53,10 @@ export const router = createBrowserRouter([
           fetch(`http://localhost:5000/course/${params.id}`),
         element: <CourseDetails></CourseDetails>,
       },
+      {
+        path: '/checkout',
+        element: <Checkout></Checkout>
+      }
     ],
   },
 ]);

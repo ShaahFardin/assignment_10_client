@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import { Button, ListGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import './LeftSideNav.css'
 
@@ -17,13 +18,17 @@ const LeftSideNav = () => {
         <h3 style={{}}>Our courses</h3>
         {catagories.map((catagory) => (
           <p className="mt-3" key={catagory.catagory_id}>
-            <Link
-              className="leftSideNav"
-              to={`/catagory/${catagory.catagory_id}`}
-            >
-              {" "}
-              {catagory.catagory_name}
-            </Link>
+            <ListGroup>
+              <Button variant="light">
+                <Link
+                  style={{textDecoration: "none", color:"black", textAlign:"start"}}
+                  to={`/catagory/${catagory.catagory_id}`}
+                >
+                  {" "}
+                  {catagory.catagory_name}
+                </Link>
+              </Button>
+            </ListGroup>
           </p>
         ))}
       </div>
