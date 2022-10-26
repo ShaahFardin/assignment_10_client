@@ -11,6 +11,9 @@ const auth = getAuth(app);
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [theme, setTheme] = useState(
+        localStorage.getItem('theme') || 'light'
+    );
 
     // SignIn with google
     const googleSignIn = (provider) =>{
@@ -39,7 +42,29 @@ const AuthProvider = ({children}) => {
         });
         return unsubscribe();
     },[]);
-    const authInfo = { user,loading, googleSignIn, logout, createNewUser, userLogin };
+
+    const blackTheme=()=>{
+        setTheme('dark');
+    }
+    const lightTheme=()=>{
+        setTheme('light');
+    }
+   
+    useEffect(() => {
+        localStorage.setItem('theme', theme);
+      document.body.className = theme;
+    }, [theme]);
+
+    const authInfo = {
+      user,
+      loading,
+      googleSignIn,
+      logout,
+      createNewUser,
+      userLogin,
+      blackTheme,
+      lightTheme,
+    };
     return (
         <AuthContext.Provider value={authInfo}>
             {children}

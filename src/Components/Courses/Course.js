@@ -13,7 +13,7 @@ const Course = ({ course }) => {
       <Card style={{ width: "18rem" }}>
         <Card.Img style={{ height: "200px" }} variant="top" src={image_url} />
         <Card.Body>
-          <Card.Title>{title}</Card.Title>
+          <Card.Title style={{ color: "black" }}>{title}</Card.Title>
           <Card.Text></Card.Text>
           <Link to={`/courseDetails/${_id}`}>
             <Button variant="primary">Course Details</Button>

@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import { useContext } from "react";
 import { Image } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
@@ -8,9 +9,12 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { FaMedapps, FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
+import "./Header.css"
 
 const Header = () => {
-  const { user, logout } = useContext(AuthContext);
+  
+  const { user, logout, handleTheme, blackTheme, lightTheme } =
+    useContext(AuthContext);
   const handleLogOut = () => {
     logout()
       .then(() => {})
@@ -18,6 +22,7 @@ const Header = () => {
         console.error(error);
       });
   };
+ 
   return (
     <div>
       <Navbar fixed="top" collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -25,7 +30,7 @@ const Header = () => {
           <Navbar.Brand href="#home">
             <FaMedapps className="me-2"></FaMedapps>
             TeachMe
-            </Navbar.Brand>
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto"></Nav>
@@ -48,18 +53,15 @@ const Header = () => {
               >
                 Blog
               </Link>
-              <NavDropdown
-                title="Theme"
-                id="collasible-nav-dropdown"
-                className=" text-white me-3 "
-              >
-                <NavDropdown.Item href="#action/3.1">
-                  Device theme
+              <NavDropdown title="Theme" id="collasible-nav-dropdown">
+                <NavDropdown.Item href="#action/3.2" onClick={lightTheme}>
+                  Light
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Black</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Light</NavDropdown.Item>
-                <NavDropdown.Divider />
+                <NavDropdown.Item href="#action/3.3" onClick={blackTheme}>
+                  Dark
+                </NavDropdown.Item>
               </NavDropdown>
+
               <Link className="mt-2 text-white me-3 text-decoration-none">
                 {user?.uid ? (
                   <>
@@ -82,7 +84,10 @@ const Header = () => {
                   </>
                 )}
               </Link>
-              <Link to='/userDetails' className="mt-2 text-white me-3 text-decoration-none">
+              <Link
+                to="/userDetails"
+                className="mt-2 text-white me-3 text-decoration-none"
+              >
                 {user?.photoURL ? (
                   <Image
                     style={{ height: "30px" }}

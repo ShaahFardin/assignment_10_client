@@ -15,7 +15,7 @@ const CourseDetails = () => {
   return (
     <div style={{ marginTop: "100px" }}>
       <h3>{courseDetails?.title}</h3>
-      <Card className="t">
+      <Card>
         <Card.Header>
           <div className="d-flex justify-content-between align-items-center">
             <div>
@@ -42,8 +42,8 @@ const CourseDetails = () => {
           src={image_url}
         ></Card.Img>
         <Card.Body>
-          <Card.Title>{title}</Card.Title>
-          <Card.Text>{details}</Card.Text>
+          <Card.Title style={{ color: "black" }}>{title}</Card.Title>
+          <Card.Text style={{ color: "black" }}>{details}</Card.Text>
           <Link to="/checkout">
             <Button variant="primary">Get Premium Access</Button>
           </Link>
