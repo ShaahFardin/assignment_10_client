@@ -5,7 +5,6 @@
   text-decoration: none;
   color: black;
 }
-
 .allCourses {
   background-color: white;
   font-size: 18px;
@@ -17,6 +16,5 @@
 .allCourses:hover {
   background-color: black;
   color: white;
+  transition-duration: 500ms;
 }
-
-
