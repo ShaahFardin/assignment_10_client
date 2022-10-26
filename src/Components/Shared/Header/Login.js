@@ -8,8 +8,10 @@ import { FaGithub } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import { GoogleAuthProvider } from "firebase/auth";
+import { useState } from "react";
 
 const Login = () => {
+  const [error, setError] = useState('');
   const { googleSignIn, userLogin } = useContext(AuthContext);
     const provier = new GoogleAuthProvider();
 
@@ -20,7 +22,8 @@ const Login = () => {
             console.log(user);
         })
         .catch((error)=>{
-            console.error(error)
+            console.error(error);
+            
         })
     }
     const handleManualSignIn = (event) =>{
@@ -34,9 +37,13 @@ const Login = () => {
         .then((result)=>{
             const user = result.user;
             console.log(user);
+            setError('');
+            form.reset();
+            
         })
         .catch((error)=>{
-            console.error(error)
+            console.error(error);
+            setError(error.message);
         });
     }
     
@@ -67,7 +74,12 @@ const Login = () => {
             </p>
           </Form.Text>
         </Form.Group>
-        <Button style={{ width: "400px" }} variant="primary" type="submit">
+        
+          <Form.Text className="text-danger mb-5">
+          {error}
+          </Form.Text>
+       
+        <Button className="mt-3" style={{ width: "400px" }} variant="primary" type="submit">
           Login
         </Button>
       </Form>
