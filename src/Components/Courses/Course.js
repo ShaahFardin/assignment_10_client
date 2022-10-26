@@ -8,7 +8,7 @@ const Course = ({ course }) => {
   const { title, image_url, _id } = course;
   return (
     <div className="mt-5">
-      <Card style={{ width: "18rem" }}>
+      <Card style={{ width: "18rem"}}>
         <Card.Img style={{ height: "200px" }} variant="top" src={image_url} />
         <Card.Body>
           <Card.Title style={{ color: "black" }}>{title}</Card.Title>

@@ -51,55 +51,60 @@ const Login = () => {
   };
 
   return (
-    <div
-      style={{
-        width: "400px",
-        marginTop: "150px",
-        marginLeft: "100px",
-      }}
-    >
-      <Form className="align-items-center" onSubmit={handleManualSignIn}>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Control type="email" name="email" placeholder="Enter email" />
-        </Form.Group>
+    <div className="d-flex justify-content-center">
+      <div
+        style={{
+          width: "400px",
+          marginTop: "150px",
+        }}
+      >
+        <Form className="align-items-center" onSubmit={handleManualSignIn}>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Control type="email" name="email" placeholder="Enter email" />
+          </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Control
-            type="password"
-            name="password"
-            placeholder="Password"
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Text className="text-muted  mb-3">
-            <p>
-              Not an user yet? <Link to="/registration">Register</Link>
-            </p>
-          </Form.Text>
-        </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Control
+              type="password"
+              name="password"
+              placeholder="Password"
+            />
+          </Form.Group>
+          <Form.Group>
+            <Form.Text className="text-muted  mb-3">
+              <p>
+                Not an user yet? <Link to="/registration">Register</Link>
+              </p>
+            </Form.Text>
+          </Form.Group>
 
-        <Form.Text className="text-danger mb-5">{error}</Form.Text>
+          <Form.Text className="text-danger mb-5">{error}</Form.Text>
 
-        <Button
-          className="mt-3"
-          style={{ width: "400px" }}
-          variant="primary"
-          type="submit"
-        >
-          Login
-        </Button>
-      </Form>
-      <div className="mt-5">
-        <ListGroup as="ul">
-          <Button onClick={handleGoogleSignIn} variant="light" className="mb-2">
-            <FcGoogle className="me-3"></FcGoogle>
-            Continue with Google
+          <Button
+            className="mt-3"
+            style={{ width: "400px" }}
+            variant="primary"
+            type="submit"
+          >
+            Login
           </Button>
-          <Button variant="light">
-            <FaGithub className="me-3"></FaGithub>
-            Continue with Github
-          </Button>
-        </ListGroup>
+        </Form>
+        <div className="mt-5">
+          <ListGroup as="ul">
+            <Button
+              onClick={handleGoogleSignIn}
+              variant="light"
+              className="mb-2"
+            >
+              <FcGoogle className="me-3"></FcGoogle>
+              Continue with Google
+            </Button>
+            <Button variant="light">
+              <FaGithub className="me-3"></FaGithub>
+              Continue with Github
+            </Button>
+          </ListGroup>
+        </div>
       </div>
     </div>
   );
