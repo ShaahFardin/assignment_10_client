@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import CourseDetails from "../Courses/CourseDetails";
 
 import Courses from "../Courses/Courses";
+import ErrorPage from "../ErrorPage/ErrorPage";
 import Main from "../Layout/Main";
 import Checkout from "../Shared/Checkout";
 
@@ -63,5 +64,9 @@ export const router = createBrowserRouter([
         ),
       },
     ],
+  },
+  {
+    path: "*",
+    element: <ErrorPage></ErrorPage>,
   },
 ]);
