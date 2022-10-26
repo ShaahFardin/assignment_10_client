@@ -35,11 +35,16 @@ const CourseDetails = () => {
             </div>
           </div>
         </Card.Header>
-        <Card.Img className="card-img-top" src={image_url}></Card.Img>
+        
+        <Card.Img
+          style={{ height: "500px" }}
+          className="card-img-top"
+          src={image_url}
+        ></Card.Img>
         <Card.Body>
           <Card.Title>{title}</Card.Title>
           <Card.Text>{details}</Card.Text>
-          <Link to='/checkout'>
+          <Link to="/checkout">
             <Button variant="primary">Get Premium Access</Button>
           </Link>
         </Card.Body>

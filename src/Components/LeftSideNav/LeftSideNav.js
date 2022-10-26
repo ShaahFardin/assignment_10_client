@@ -15,13 +15,13 @@ const LeftSideNav = () => {
   return (
     <div className="Nav d-none d-lg-block">
       <div style={{ position: "fixed", top: "10" }}>
-        <h3 style={{}}>Our courses</h3>
+        <h3 >Our courses</h3>
         {catagories.map((catagory) => (
           <p className="mt-3" key={catagory.catagory_id}>
             <ListGroup>
               <Button variant="light">
                 <Link
-                  style={{textDecoration: "none", color:"black", textAlign:"start"}}
+                  style={{textDecoration: "none", color:"black"}}
                   to={`/catagory/${catagory.catagory_id}`}
                 >
                   {" "}
