@@ -10,7 +10,7 @@ const Main = () => {
       <Header></Header>
       <Container>
         <Row>
-          <Col lg="3" style={{ position: "relative" }}>
+          <Col lg="3" >
             <LeftSideNav></LeftSideNav>
           </Col>
           <Col lg="9">
@@ -23,3 +23,4 @@ const Main = () => {
 };
 
 export default Main;
+// style={{ position: "relative" }}

@@ -8,6 +8,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { FaMedapps, FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
+import LeftSideNav from "../../LeftSideNav/LeftSideNav";
 import "./Header.css";
 
 const Header = () => {
@@ -95,6 +96,7 @@ const Header = () => {
                   <FaUser></FaUser>
                 )}
               </Link>
+              
             </Nav>
           </Navbar.Collapse>
         </Container>

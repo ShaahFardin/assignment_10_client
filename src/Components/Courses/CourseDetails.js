@@ -17,7 +17,10 @@ const CourseDetails = () => {
       <h3>{courseDetails?.title}</h3>
       <Card>
         <Card.Header>
-          <div className="d-flex justify-content-between align-items-center">
+          <div
+            className="d-flex justify-content-between align-items-center"
+            style={{ color: "black" }}
+          >
             <div>
               <Image
                 className="me-2"

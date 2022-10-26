@@ -48,7 +48,7 @@ const AuthProvider = ({ children }) => {
     return unsubscribe();
   }, []);
 
-  //   toggle theme
+//   toggle theme
   const blackTheme = () => {
     setTheme("dark");
   };

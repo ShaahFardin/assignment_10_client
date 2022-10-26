@@ -41,8 +41,8 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         setError("");
-        navigate(from, { replace: true });
         form.reset();
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.error(error);
