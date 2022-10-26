@@ -9,7 +9,8 @@ export const AuthContext = createContext();
 const auth = getAuth(app);
 
 const AuthProvider = ({children}) => {
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     // SignIn with google
     const googleSignIn = (provider) =>{
@@ -17,24 +18,28 @@ const AuthProvider = ({children}) => {
     }
     // logout
     const logout = () =>{
+        setLoading(true);
         return signOut(auth);
     } 
     // create new user with email and pass
     const createNewUser = (email, password) =>{
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
     // login with email and apss
     const userLogin = (email, password) =>{
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
     }
     useEffect(()=>{
        const unsubscribe = onAuthStateChanged(auth, currentUser=>{
             console.log(currentUser);
-            setUser(currentUser)
+            setUser(currentUser);
+            setLoading(false);
         });
-        return unsubscribe;
+        return unsubscribe();
     },[]);
-    const authInfo = { user, googleSignIn, logout, createNewUser, userLogin };
+    const authInfo = { user,loading, googleSignIn, logout, createNewUser, userLogin };
     return (
         <AuthContext.Provider value={authInfo}>
             {children}
