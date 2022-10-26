@@ -8,7 +8,6 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { FaMedapps, FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
-import LeftSideNav from "../../LeftSideNav/LeftSideNav";
 import "./Header.css";
 
 const Header = () => {
@@ -47,11 +46,11 @@ const Header = () => {
               </Link>
               <Link
                 to="/blog"
-                className="mt-2 text-white me-3 text-decoration-none"
+                className="mt-2 text-white me-2 text-decoration-none"
               >
                 Blog
               </Link>
-              <NavDropdown title="Theme" id="collasible-nav-dropdown">
+              <NavDropdown className="me-2" title="Theme" id="collasible-nav-dropdown">
                 <NavDropdown.Item href="#action/3.2" onClick={lightTheme}>
                   Light
                 </NavDropdown.Item>
