@@ -1,8 +1,10 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { useLoaderData } from "react-router-dom";
 
 const Checkout = () => {
+  const courseDeails = useLoaderData();
   return (
     <div
       style={{
@@ -13,11 +15,14 @@ const Checkout = () => {
     >
       <Form>
         <Form.Group className="mb-3" controlId="formBasicEmail">
+          <h5>Selected Course : {courseDeails.title}</h5>
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Control name="name" type="text" placeholder="Your Full Name" />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label></Form.Label>
-          <Form.Control name="photoURL" type="text" placeholder="Photo URL" />
+          <Form.Control name="photoURL" type="text" placeholder="$ Amount" />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label></Form.Label>
@@ -36,7 +41,7 @@ const Checkout = () => {
           />
         </Form.Group>
         <Form.Group controlId="formFileMultiple" className="mb-3">
-          <Form.Label>Multiple files input example</Form.Label>
+          <Form.Label>Choose files</Form.Label>
           <Form.Control type="file" multiple />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicCheckbox">

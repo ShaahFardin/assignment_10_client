@@ -9,7 +9,7 @@ import { Image } from "react-bootstrap";
 
 const CourseDetails = () => {
   const courseDetails = useLoaderData();
-  const { title, details, image_url, author, rating, total_view } =
+  const { title, details, image_url, author, rating, total_view, _id } =
     courseDetails;
   console.log(courseDetails);
   return (
@@ -44,7 +44,7 @@ const CourseDetails = () => {
         <Card.Body>
           <Card.Title style={{ color: "black" }}>{title}</Card.Title>
           <Card.Text style={{ color: "black" }}>{details}</Card.Text>
-          <Link to="/checkout">
+          <Link to={`/checkout/${_id}`}>
             <Button variant="primary">Get Premium Access</Button>
           </Link>
         </Card.Body>
