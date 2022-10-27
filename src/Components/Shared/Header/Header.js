@@ -8,6 +8,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import toast from "react-hot-toast";
 import { FaMedapps, FaUser } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
+import ReactTooltip from "react-tooltip";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import "./Header.css";
 
@@ -28,7 +29,7 @@ const Header = () => {
       <Navbar fixed="top" collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
           <Link to="/" style={{ textDecoration: "none" }}>
-            <Navbar.Brand >
+            <Navbar.Brand>
               <FaMedapps className="me-2"></FaMedapps>
               TeachMe
             </Navbar.Brand>
@@ -43,7 +44,9 @@ const Header = () => {
               >
                 Courses
               </Link>
+
               <Link
+                data-tip="hello world"
                 to="/faq"
                 className="mt-2 text-white me-3 text-decoration-none"
               >
@@ -56,7 +59,7 @@ const Header = () => {
                 Blog
               </Link>
               <NavDropdown
-                className="me-2"
+                
                 title="Theme"
                 id="collasible-nav-dropdown"
               >
@@ -99,10 +102,9 @@ const Header = () => {
               <Link className="mt-2 text-white me-3 text-decoration-none">
                 {user?.uid ? (
                   <>
-                    <span>{user?.displayName}</span>
                     <Link
                       onClick={handleLogOut}
-                      className="mt- text-white ms-3 text-decoration-none"
+                      className="text-white ms-1 text-decoration-none"
                     >
                       Logout
                     </Link>
@@ -119,6 +121,8 @@ const Header = () => {
                 )}
               </Link>
               <Link
+                data-tip
+                data-for="registerTip"
                 to="/userDetails"
                 className="mt-2 text-white me-3 text-decoration-none"
               >
@@ -132,6 +136,11 @@ const Header = () => {
                   <FaUser></FaUser>
                 )}
               </Link>
+
+
+              <ReactTooltip id="registerTip" place="top" effect="solid">
+                {user?.uid? user?.displayName:<p>Null</p>}
+              </ReactTooltip>
             </Nav>
           </Navbar.Collapse>
         </Container>
