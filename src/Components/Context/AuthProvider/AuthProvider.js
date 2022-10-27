@@ -20,6 +20,10 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
+
+  const githubSignIn = (githubProvider) => {
+    return signInWithPopup(auth, githubProvider);
+  };
   // SignIn with google
   const googleSignIn = (provider) => {
     return signInWithPopup(auth, provider);
@@ -69,6 +73,7 @@ const AuthProvider = ({ children }) => {
     userLogin,
     blackTheme,
     lightTheme,
+    githubSignIn,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

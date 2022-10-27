@@ -7,17 +7,30 @@ import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
-import { GoogleAuthProvider } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import { useState } from "react";
 
 const Login = () => {
   const [error, setError] = useState("");
-  const { googleSignIn, userLogin } = useContext(AuthContext);
+  const { googleSignIn, userLogin, githubSignIn } = useContext(AuthContext);
   const provier = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
 
   let location = useLocation();
   let navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
+
+
+  const handleGithubSignIn=()=>{
+    githubSignIn(githubProvider)
+    .then((result)=>{
+      const user = result.user;
+      console.log("github user", user);
+    })
+    .catch((error)=>{
+      console.error(error)
+    })
+  }
 
   const handleGoogleSignIn = () => {
     googleSignIn(provier)
@@ -100,7 +113,7 @@ const Login = () => {
               <FcGoogle className="me-3"></FcGoogle>
               Continue with Google
             </Button>
-            <Button variant="light">
+            <Button onClick={handleGithubSignIn} variant="light">
               <FaGithub className="me-3"></FaGithub>
               Continue with Github
             </Button>
