@@ -50,7 +50,11 @@ const Header = () => {
               >
                 Blog
               </Link>
-              <NavDropdown className="me-2" title="Theme" id="collasible-nav-dropdown">
+              <NavDropdown
+                className="me-2"
+                title="Theme"
+                id="collasible-nav-dropdown"
+              >
                 <NavDropdown.Item href="#action/3.2" onClick={lightTheme}>
                   Light
                 </NavDropdown.Item>
@@ -60,6 +64,34 @@ const Header = () => {
               </NavDropdown>
 
               <Link className="mt-2 text-white me-3 text-decoration-none">
+                {user?.uid ? (
+                  <>
+                    <Link
+                      onClick={handleLogOut}
+                      className="text-white me-3 text-decoration-none"
+                    >
+                      Logout
+                    </Link>
+                    <Image
+                      style={{ height: "30px" }}
+                      roundedCircle
+                      src={user?.photoURL}
+                    ></Image>
+                  </>
+                ) : (
+                  <>
+                    <Link
+                      className="mt-2 text-white me-3 text-decoration-none"
+                      to="/login"
+                    >
+                      Login
+                    </Link>
+                    <FaUser></FaUser>
+                  </>
+                )}
+              </Link>
+
+              {/*  <Link className="mt-2 text-white me-3 text-decoration-none">
                 {user?.uid ? (
                   <>
                     <span>{user?.displayName}</span>
@@ -85,7 +117,7 @@ const Header = () => {
                 to="/userDetails"
                 className="mt-2 text-white me-3 text-decoration-none"
               >
-                {user?.photoURL ? (
+                {user?.uid ? (
                   <Image
                     style={{ height: "30px" }}
                     roundedCircle
@@ -94,8 +126,7 @@ const Header = () => {
                 ) : (
                   <FaUser></FaUser>
                 )}
-              </Link>
-              
+              </Link> */}
             </Nav>
           </Navbar.Collapse>
         </Container>

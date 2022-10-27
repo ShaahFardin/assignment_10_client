@@ -4,7 +4,6 @@ import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 
 const Course = ({ course }) => {
-  console.log(course);
   const { title, image_url, _id } = course;
   return (
     <div className="mt-5">
