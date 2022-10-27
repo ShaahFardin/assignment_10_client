@@ -9,10 +9,12 @@ import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const [error, setError] = useState("");
-  const { googleSignIn, userLogin, githubSignIn } = useContext(AuthContext);
+  const { googleSignIn, userLogin, githubSignIn, setLoading } =
+    useContext(AuthContext);
   const provier = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
 
@@ -26,6 +28,7 @@ const Login = () => {
     .then((result)=>{
       const user = result.user;
       console.log("github user", user);
+      navigate(from, { replace: true });
     })
     .catch((error)=>{
       console.error(error)
@@ -56,11 +59,15 @@ const Login = () => {
         console.log(user);
         setError("");
         form.reset();
+        toast.success("Login successful!");
         navigate(from, { replace: true });
       })
       .catch((error) => {
         console.error(error);
         setError(error.message);
+      })
+      .finally(()=>{
+        setLoading(false);
       });
   };
 

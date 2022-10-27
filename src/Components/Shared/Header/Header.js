@@ -5,16 +5,21 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import toast from "react-hot-toast";
 import { FaMedapps, FaUser } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import "./Header.css";
 
 const Header = () => {
   const { user, logout, blackTheme, lightTheme } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleLogOut = () => {
     logout()
-      .then(() => {})
+      .then(() => {
+        toast.error("Logged out");
+        navigate('/');
+      })
       .catch((error) => {
         console.error(error);
       });
