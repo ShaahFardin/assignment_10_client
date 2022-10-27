@@ -13,12 +13,10 @@ import "./Header.css";
 
 const Header = () => {
   const { user, logout, blackTheme, lightTheme } = useContext(AuthContext);
-  const navigate = useNavigate();
   const handleLogOut = () => {
     logout()
       .then(() => {
         toast.error("Logged out");
-        navigate('/');
       })
       .catch((error) => {
         console.error(error);

@@ -8,11 +8,9 @@ import { FaGithub } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
-import { useState } from "react";
 import toast from "react-hot-toast";
 
 const Login = () => {
-  const [error, setError] = useState("");
   const { googleSignIn, userLogin, githubSignIn, setLoading } =
     useContext(AuthContext);
   const provier = new GoogleAuthProvider();
@@ -22,28 +20,28 @@ const Login = () => {
   let navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
 
-
-  const handleGithubSignIn=()=>{
+  const handleGithubSignIn = () => {
     githubSignIn(githubProvider)
-    .then((result)=>{
-      const user = result.user;
-      console.log("github user", user);
-      navigate(from, { replace: true });
-    })
-    .catch((error)=>{
-      console.error(error)
-    })
-  }
-
-  const handleGoogleSignIn = () => {
-    googleSignIn(provier)
       .then((result) => {
-        const user = result.user;
-        console.log(user);
+        // const user = result.user;
+        toast.success("Login successful");
         navigate(from, { replace: true });
       })
       .catch((error) => {
         console.error(error);
+        toast.error(error.message);
+      });
+  };
+
+  const handleGoogleSignIn = () => {
+    googleSignIn(provier)
+      .then((result) => {
+        // const user = result.user;
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.error(error);
+        toast.error(error.message);
       });
   };
   const handleManualSignIn = (event) => {
@@ -55,19 +53,14 @@ const Login = () => {
 
     userLogin(email, password)
       .then((result) => {
-        const user = result.user;
-        console.log(user);
-        setError("");
+        // const user = result.user;
         form.reset();
         toast.success("Login successful!");
         navigate(from, { replace: true });
       })
       .catch((error) => {
         console.error(error);
-        setError(error.message);
-      })
-      .finally(()=>{
-        setLoading(false);
+        toast.error(error.message);
       });
   };
 
@@ -98,9 +91,6 @@ const Login = () => {
               </p>
             </Form.Text>
           </Form.Group>
-
-          <Form.Text className="text-danger mb-5">{error}</Form.Text>
-
           <Button
             className="mt-3"
             style={{ width: "400px" }}
