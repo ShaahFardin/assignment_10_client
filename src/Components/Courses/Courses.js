@@ -7,7 +7,7 @@ const Courses = () => {
   console.log(allCourses);
   return (
     <div style={{ marginTop: "100px"}}>
-      <div className="d-flex flex-wrap gap-5 justify-content-center">
+      <div className="d-flex flex-wrap gap-5 justify-content-center mb-5">
         {allCourses.map((course) => (
           <Course key={course._id} course={course}></Course>
         ))}

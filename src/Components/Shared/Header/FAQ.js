@@ -4,7 +4,7 @@ const FAQ = () => {
     return (
       <div>
         <h1 style={{ marginTop: "150px", marginBottom: "50px" }}>
-          Frequently asked Interview question of React
+          Frequently asked Interview question about React
         </h1>
         <div>
           <h3>1. What is React?</h3>
@@ -71,7 +71,7 @@ const FAQ = () => {
           slash plus star sign (/*) and star plus sign (*/) combination at the
           end.
         </p>
-        <h3>12. What's the difference between Real DOM and Virtual DOM?</h3>
+        <h3>10. What's the difference between Real DOM and Virtual DOM?</h3>
         <p>
           Real DOM is the object of a document with all content and
           dependencies. In React for each Real DOM is available Virtual DOM,
