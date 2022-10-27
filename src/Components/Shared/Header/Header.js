@@ -66,7 +66,7 @@ const Header = () => {
                 </NavDropdown.Item>
               </NavDropdown>
 
-              <Link className="mt-2 text-white me-3 text-decoration-none">
+             {/*  <Link className="mt-2 text-white me-3 text-decoration-none">
                 {user?.uid ? (
                   <>
                     <Link
@@ -92,9 +92,9 @@ const Header = () => {
                     <FaUser></FaUser>
                   </>
                 )}
-              </Link>
+              </Link> */}
 
-              {/*  <Link className="mt-2 text-white me-3 text-decoration-none">
+               <Link className="mt-2 text-white me-3 text-decoration-none">
                 {user?.uid ? (
                   <>
                     <span>{user?.displayName}</span>
@@ -120,7 +120,7 @@ const Header = () => {
                 to="/userDetails"
                 className="mt-2 text-white me-3 text-decoration-none"
               >
-                {user?.uid ? (
+                {user?.photoURL ? (
                   <Image
                     style={{ height: "30px" }}
                     roundedCircle
@@ -129,7 +129,7 @@ const Header = () => {
                 ) : (
                   <FaUser></FaUser>
                 )}
-              </Link> */}
+              </Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
