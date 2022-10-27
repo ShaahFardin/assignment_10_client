@@ -7,7 +7,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import toast from "react-hot-toast";
 import { FaMedapps, FaUser } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ReactTooltip from "react-tooltip";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import "./Header.css";
