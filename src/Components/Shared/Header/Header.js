@@ -27,10 +27,12 @@ const Header = () => {
     <div>
       <Navbar fixed="top" collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">
-            <FaMedapps className="me-2"></FaMedapps>
-            TeachMe
-          </Navbar.Brand>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <Navbar.Brand >
+              <FaMedapps className="me-2"></FaMedapps>
+              TeachMe
+            </Navbar.Brand>
+          </Link>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto"></Nav>
@@ -66,7 +68,7 @@ const Header = () => {
                 </NavDropdown.Item>
               </NavDropdown>
 
-             {/*  <Link className="mt-2 text-white me-3 text-decoration-none">
+              {/*  <Link className="mt-2 text-white me-3 text-decoration-none">
                 {user?.uid ? (
                   <>
                     <Link
@@ -94,7 +96,7 @@ const Header = () => {
                 )}
               </Link> */}
 
-               <Link className="mt-2 text-white me-3 text-decoration-none">
+              <Link className="mt-2 text-white me-3 text-decoration-none">
                 {user?.uid ? (
                   <>
                     <span>{user?.displayName}</span>
