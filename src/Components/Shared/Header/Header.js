@@ -71,34 +71,7 @@ const Header = () => {
                 </NavDropdown.Item>
               </NavDropdown>
 
-              {/*  <Link className="mt-2 text-white me-3 text-decoration-none">
-                {user?.uid ? (
-                  <>
-                    <Link
-                      onClick={handleLogOut}
-                      className="text-white me-3 text-decoration-none"
-                    >
-                      Logout
-                    </Link>
-                    <Image
-                      style={{ height: "30px" }}
-                      roundedCircle
-                      src={user?.photoURL}
-                    ></Image>
-                  </>
-                ) : (
-                  <>
-                    <Link
-                      className="mt-2 text-white me-3 text-decoration-none"
-                      to="/login"
-                    >
-                      Login
-                    </Link>
-                    <FaUser></FaUser>
-                  </>
-                )}
-              </Link> */}
-
+             
               <Link className="mt-2 text-white me-3 text-decoration-none">
                 {user?.uid ? (
                   <>

@@ -9,6 +9,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import toast from "react-hot-toast";
+import useTitle from "../../../Hooks/Hooks";
 
 const Login = () => {
   const { googleSignIn, userLogin, githubSignIn, setLoading } =
@@ -19,6 +20,8 @@ const Login = () => {
   let location = useLocation();
   let navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
+
+  useTitle('Login')
 
   const handleGithubSignIn = () => {
     githubSignIn(githubProvider)

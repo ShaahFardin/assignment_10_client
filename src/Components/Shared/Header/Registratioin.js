@@ -4,11 +4,14 @@ import { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
+import useTitle from "../../../Hooks/Hooks";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 
 const Registratioin = () => {
   const [error, setError] = useState("");
   const { createNewUser } = useContext(AuthContext);
+
+  useTitle('Register')
   const handleRegister = (event) => {
     event.preventDefault();
     const form = event.target;

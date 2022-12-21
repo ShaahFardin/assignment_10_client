@@ -27,12 +27,12 @@ const AuthProvider = ({ children }) => {
   };
   // SignIn with google
   const googleSignIn = (provider) => {
-    setLoading(true);
+    setLoading(false);
     return signInWithPopup(auth, provider);
   };
   // logout
   const logout = () => {
-    setLoading(true);
+    setLoading(false);
     return signOut(auth);
   };
   // create new user with email and pass
